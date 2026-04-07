@@ -19,6 +19,8 @@ class Fibonacci
     @fibs[sequence_term]
   end
 
+  private
+
   def next_element
     last_element = @fibs.last
     penultimate_element = @fibs[-2]

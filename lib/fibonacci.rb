@@ -14,14 +14,14 @@ class Fibonacci
     return nil if sequence_term.negative?
     return @fibs[sequence_term] if sequence_term <= itr
 
-    next_element(itr)
-    calculate if itr < sequence_term
+    next_element
+    calculate
     @fibs[sequence_term]
   end
 
-  def next_element(itr)
-    last_element = @fibs[itr]
-    penultimate_element = @fibs[itr - 1]
+  def next_element
+    last_element = @fibs.last
+    penultimate_element = @fibs[-2]
     @fibs << (penultimate_element + last_element)
   end
 end

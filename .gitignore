@@ -1,9 +1,1 @@
-/.bundle/
-/vendor/bundle/
-/coverage/
-/tmp/
-/log/
-/*.gem
 /.ruby-version
-/.tool-versions
-.DS_Store

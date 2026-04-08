@@ -2,38 +2,18 @@
 
 require_relative '../lib/fibonacci'
 
+RSpec.shared_examples 'a fibonacci calculator' do |sequence_term, expected|
+  it "returns #{expected.inspect}" do
+    matcher = expected.nil? ? be_nil : eq(expected)
+    expect(described_class.new(sequence_term).calculate).to matcher
+  end
+end
+
 describe Fibonacci do
   describe '#calculate' do
-    context 'when sequence_term is negative' do
-      subject(:negative_term) { described_class.new(-1) }
-      it 'returns nil' do
-        nil_calculation = negative_term.calculate
-        expect(nil_calculation).to be nil
-      end
-    end
-
-    context 'when sequence_term is 0' do
-      subject(:zero_term) { described_class.new(0) }
-      it 'returns 0' do
-        zero_calculation = zero_term.calculate
-        expect(zero_calculation).to eq(0)
-      end
-    end
-
-    context 'when sequence_term is 1' do
-      subject(:one_term) { described_class.new(1) }
-      it 'returns 1' do
-        calculate_one = one_term.calculate
-        expect(calculate_one).to eq(1)
-      end
-    end
-
-    context 'when sequence_term is 8' do
-      subject(:eight) { described_class.new(8) }
-      it 'returns 21' do
-        calculation = eight.calculate
-        expect(calculation).to eq(21)
-      end
-    end
+    include_examples 'a fibonacci calculator', -1, nil
+    include_examples 'a fibonacci calculator', 0, 0
+    include_examples 'a fibonacci calculator', 1, 1
+    include_examples 'a fibonacci calculator', 8, 21
   end
 end

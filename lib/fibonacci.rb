@@ -12,7 +12,7 @@ class Fibonacci
   def calculate
     itr = @fibs.length - 1
     return nil if sequence_term.negative?
-    return @fibs[sequence_term] if sequence_term <= itr
+    return sequence_term if sequence_term <= itr
 
     next_element
     calculate
